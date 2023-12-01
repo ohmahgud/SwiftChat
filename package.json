@@ -1,0 +1,16 @@
+{
+  "name": "yassin-usb",
+  "version": "1.0.0",
+  "description": "You Need To Install Some Things to this Javascript/HTML/CSS Project Before Running it.. Or Else it won't work!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "uuid": "^9.0.1"
+  }
+}

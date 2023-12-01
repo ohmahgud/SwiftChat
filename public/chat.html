@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Chat Room</title>
+</head>
+<body>
+  <div id="roomInfo">
+    <span>Room Code: <span id="roomCode"></span></span>
+    <button id="copyRoomCode">Copy Room Code</button>
+  </div>
+  <div id="messages"></div>
+  <form onsubmit="sendMessage(event)">
+    <input type="text" id="messageInput" autocomplete="off" required>
+    <button type="submit">Send</button>
+  </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomId = urlParams.get('roomId');
+    const username = urlParams.get('username');
+    const socket = io();
+    const messages = document.getElementById('messages');
+    const messageInput = document.getElementById('messageInput');
+
+    const roomCodeElement = document.getElementById('roomCode');
+    roomCodeElement.innerText = roomId;
+
+    document.getElementById('copyRoomCode').addEventListener('click', () => {
+      const temporaryInput = document.createElement('input');
+      document.body.appendChild(temporaryInput);
+      temporaryInput.value = roomId;
+      temporaryInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(temporaryInput);
+      alert('Room code copied to clipboard!');
+    });
+
+    socket.emit('join', { roomId, username });
+
+    socket.on('message', ({ username, text }) => {
+      const messageElement = document.createElement('div');
+      messageElement.innerHTML = `<strong>${username}:</strong> ${text}`;
+      messages.appendChild(messageElement);
+      messages.scrollTop = messages.scrollHeight;
+    });
+
+    function sendMessage(event) {
+      event.preventDefault();
+      const message = messageInput.value;
+      socket.emit('sendMessage', message);
+      messageInput.value = '';
+    }
+  </script>
+</body>
+</html>

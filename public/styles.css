@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    padding-top: 56px;
+    font-weight: bold;
+  }
+  
+  
+  h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  input, button {
+    font-size: 1rem;
+  }
+  
+  input {
+    padding: 8px 16px;
+    border: 1px solid #3b4048;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 8px;
+    background-color: #2e3138;
+    color: #d8dee9;
+  }
+  
+
+  #EnterHelp {
+    color: #fff;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  form {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  p {
+    color: #fff;
+  }
+
+  #messages {
+    width: 100%;
+    max-width: 640px;
+    background-color: #2e3138;
+    padding: 16px;
+    border: 1px solid #3b4048;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: auto;
+    max-height: 400px;
+    color: #d8dee9;
+    height: 310px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  #roomInfo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    font-weight: bold;
+  }
+  
+  #roomCode {
+    font-weight: bold;
+  }
+  
+
+    /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Hide native scrollbar */
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+
+
+  #copyRoomCode {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 40px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  
+  #copyRoomCode:hover {
+    background-color: #0056b3;
+  }
+  
+
+  sendButton {
+    margin-top: 30px;
+  }
+  
+  ul {
+    list-style-type: none;
+}
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Join a Chat Room</title>
+</head>
+<body>
+  <h1>Join a Chat Room</h1>
+  <form onsubmit="joinRoom(event)">
+    <input type="text" id="roomNumber" pattern=".{6}" maxlength="6" required>
+    <button type="submit">Join</button>
+    <button onclick="createRoom()">Create a New Room</button>  
+  </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    function joinRoom(event) {
+      event.preventDefault();
+      const roomNumber = document.getElementById('roomNumber').value;
+      socket.emit('checkRoom', { roomId: roomNumber });
+    }
+
+    function createRoom() {
+      window.location.href = '/new';
+    }
+
+    socket.on('error', (error) => {
+      alert(error.message);
+    });
+
+    socket.on('roomChecked', ({ exists, roomId }) => {
+      if (exists) {
+        window.location.href = `/register.html?roomId=${roomId}`;
+      } else {
+        alert('Invalid room number.');
+      }
+    });
+  </script>
+</body>
+</html>

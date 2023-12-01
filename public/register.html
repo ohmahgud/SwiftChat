@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Register</title>
+</head>
+<body>
+
+  <h1>Enter your username</h1>
+  <form onsubmit="register(event)">
+    <input type="text" id="username" maxlength="10" required>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomId = urlParams.get('roomId');
+
+    function sanitizeHTML(str) {
+      const temp = document.createElement('div');
+      temp.textContent = str;
+      return temp.innerHTML;
+    }
+
+    function register(event) {
+      event.preventDefault();
+      const usernameInput = document.getElementById('username');
+      const username = sanitizeHTML(usernameInput.value);
+      window.location.href = `/chat.html?roomId=${roomId}&username=${username}`;
+    }
+  </script>
+</body>
+</html>
